@@ -396,10 +396,6 @@ bool xmrig::DaemonClient::parseJob(const rapidjson::Value &params, int *code)
         return jobError("Empty block template received from daemon."); // FIXME
     }
 
-    if (!m_blocktemplate.parse(blocktemplate, m_coin)) {
-        return jobError("Invalid block template received from daemon.");
-    }
-
 #   ifdef XMRIG_PROXY_PROJECT
     const size_t k = m_blocktemplate.offset(BlockTemplate::MINER_TX_PREFIX_OFFSET);
     job.setMinerTx(
